@@ -6,3 +6,15 @@ usando backtracking e prunning:
 - os vértices mais próximos da raíz tem rótulos maiores
 - o filho de maior rótulo de cada vértice tem a maior altura
 - se um filho é folha então não existe outro com menor rótulo que não é folha
+
+# uso
+
+- make
+- ./trees (número de vértices) (flag = 0 ou 1) 
+	- se flag é diferente de 0: ./trees (número de vértices) 1 (arquivo binário)
+
+# teste
+
+para ver se o arquivo está correto (não tem árvores duplicadas nem está mal formatado)
+
+- use ./test (arquivo binário)
