@@ -18,5 +18,5 @@ usando backtracking e prunning:
 
 para ver se o arquivo está correto (não tem árvores duplicadas nem está mal formatado)
 
-- use ./test (arquivo binário)
-- exemplo: ./test trees.dat
+- use ./teste (arquivo binário)
+- exemplo: ./teste trees.dat
