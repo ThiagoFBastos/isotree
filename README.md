@@ -12,9 +12,11 @@ usando backtracking e prunning:
 - make
 - ./trees (número de vértices) (flag = 0 ou 1) 
 	- se flag é diferente de 0: ./trees (número de vértices) 1 (arquivo binário)
+	- exemplo: ./trees 20 1 trees.dat
 
 # teste
 
 para ver se o arquivo está correto (não tem árvores duplicadas nem está mal formatado)
 
 - use ./test (arquivo binário)
+- exemplo: ./test trees.dat
