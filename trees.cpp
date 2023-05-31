@@ -141,13 +141,13 @@ int main(int argc, char* argv[]) {
 	int save;
 	
 	if(argc < 3 || sscanf(argv[1], "%d", &n) <= 0 || sscanf(argv[2], "%d", &save) <= 0) {
-		cout << "./gerador <nós> <save=0/1>\n";
+		cout << "use: ./trees <nós> <save=0/1>\n";
 		return 0;
 	} else if(n > N || n < 4) {
 		cout << "o número de nós deve ser entre 4 e " << N << '\n';
 		return 0;
 	} else if(save && argc < 4) {
-		cout << "coloque um arquivo\n";
+		cout << "use: ./trees <nós> 1 <arquivo>\n";
 		return 0;
 	}
 

@@ -10,6 +10,7 @@
 #include <cassert>
 #include <utility>
 #include <queue>
+#include <string>
 
 using adjList = std :: vector<std :: vector<int>>;
 
@@ -102,10 +103,10 @@ int main(int argc, char* argv[]) {
 	int save;
 
 	if(argc < 3 || sscanf(argv[2], "%d", &save) <= 0) {
-		std :: cout << "coloque ./teste <arquivo> <print: 0/1>\n";
+		std :: cout << "use: ./teste <arquivo> <print=0/1>\n";
 		return 0;
 	} else if(save && argc < 4) {
-		std :: cout << "coloque ./teste <arquivo> 1 <saida>\n";
+		std :: cout << "use: ./teste <arquivo> 1 <saida>\n";
 		return 0;
 	}
 
@@ -150,9 +151,9 @@ int main(int argc, char* argv[]) {
 
 		if(save) {
 			for(int v = 0; v < n; ++v) {
-				print << v << ":";		
-				for(int u : adj[v]) print << " " << u;
-				print << '\n';
+				std :: string A(n, '0');	
+				for(int u : adj[v]) A[u] = '1';
+				print << A << '\n';
 			}
 			print << '\n';
 		}
