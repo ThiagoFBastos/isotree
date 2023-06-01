@@ -13,7 +13,7 @@ using namespace __gnu_pbds;
 
 template <class K, class V>
 using ht = gp_hash_table
-<K, V, std :: hash<K>, std :: equal_to<K>,
+<K, V, hash<K>, equal_to<K>,
 direct_mask_range_hashing<>,
 linear_probe_fn<>,
 hash_standard_resize_policy<
@@ -21,10 +21,10 @@ hash_exponential_size_policy<>,
 hash_load_check_resize_trigger
 <>, true>>;
 
-const int N = 24;
+const int N = 30;
 
 int lv[N][N], lv_sz[N];
-int n, sub[N], deg[N], adj[N][N], par[N], sub_sz[N][N], nsub[N];
+int n, sub[N], deg[N], adj[N][N], par[N], sub_lv_sz[N][N], sub_sz[N], nsub[N];
 ht<uint64_t, null_type> trees;
 
 uint64_t treePat(int [][N], int[], int, int = -1);
@@ -85,16 +85,17 @@ pair<int, int> center(int g[][N], int deg[]) {
 }
 
 bool prunning(int h) {
-	int max_depth[N] = {0};
+	int max_depth[N];
 	for(int i = h; i >= 0; --i) {
-		for(int k = 0; k < lv_sz[i]; ++k) {	
+		for(int k = lv_sz[i] - 1; k >= 0; --k) {
 			int v = lv[i][k], p = par[v];
-			if(!max_depth[v]) max_depth[v] = i;
-			if(p != -1 && max_depth[p] < max_depth[v]) max_depth[p] = max_depth[v];
-			for(int j = 1 + (!!i); j < deg[v]; ++j) {
-				int a = adj[v][j-1], b = adj[v][j];
-				if(max_depth[a]<max_depth[b]) return true;
+			max_depth[v] = i;
+			if(deg[v] - (p != -1)) {
+				int u = adj[v][p != -1];
+				max_depth[v] = max_depth[u];
 			}
+			if(k < lv_sz[i]-1 && par[lv[i][k+1]] == p && max_depth[v]<max_depth[lv[i][k+1]]) 
+				return true;
 		}
 	}
 	return false;
@@ -115,16 +116,15 @@ void backtrack(int h, int cur_p, int v) {
 	adj[p][deg[p]++] = v, adj[v][deg[v]++] = p;
 	lv[h][lv_sz[h]++] = v;
 
-	if(h == 1) sub[v] = n - v - 2;
-	else sub[v] = sub[p];
+	sub[v] = h == 1 ? n - v - 2 : sub[p];
 
-	if(sub_sz[h][sub[v]]++ == 0) ++nsub[h];
+	if(sub_lv_sz[h][sub[v]]++ == 0) ++nsub[h];
 
 	backtrack(h, cur_p, v - 1);
 
 	if(v && nsub[h] >= 2) backtrack(h + 1, 0, v - 1);
 
-	if(--sub_sz[h][sub[v]] == 0) --nsub[h];
+	if(--sub_lv_sz[h][sub[v]] == 0) --nsub[h];
 
 	--deg[p], --deg[v], --lv_sz[h];
 
@@ -143,8 +143,8 @@ int main(int argc, char* argv[]) {
 	if(argc < 3 || sscanf(argv[1], "%d", &n) <= 0 || sscanf(argv[2], "%d", &save) <= 0) {
 		cout << "use: ./trees <nós> <save=0/1>\n";
 		return 0;
-	} else if(n > N || n < 4) {
-		cout << "o número de nós deve ser entre 4 e " << N << '\n';
+	} else if(n > 24 || n < 4) {
+		cout << "o número de nós deve ser entre 4 e 24\n";
 		return 0;
 	} else if(save && argc < 4) {
 		cout << "use: ./trees <nós> 1 <arquivo>\n";

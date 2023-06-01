@@ -31,14 +31,17 @@ adjList getAdjList(uint64_t t, int n) {
 
 	for(int i = len - 1; i >= 0; --i) {
 		if((t >> i) & 1) {
+			assert(!v || !st.empty());
 			if(!st.empty()) {
 				int p = st.top();
 				adj[p].push_back(v);
 				adj[v].push_back(p);
 			}
 			st.push(v++);
-		} else
+		} else {
+			assert(!st.empty());
 			st.pop();
+		}
 	}
 
 	return adj;
