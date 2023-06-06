@@ -1,4 +1,4 @@
-algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 21) vértices
+algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 22) vértices
 usando backtracking e prunning: 
 - os vértices são rotulados
 - a árvore é enraizada
