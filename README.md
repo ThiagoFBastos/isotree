@@ -1,12 +1,11 @@
-algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 22) vértices
-usando backtracking e prunning: 
-- os vértices são rotulados
-- a árvore é enraizada
-- a raíz faz parte do centro
-- os vértices mais próximos da raíz tem rótulos maiores
-- o filho de maior rótulo de cada vértice tem a maior altura
-- se um filho é folha então não existe outro com menor rótulo que não é folha
-
+Algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 22) vértices:
+- A árvore é enraizada e construída nível por nível
+- Os vértices de um nível = h possuem rótulos maiores que os do nível = h + 1
+- Para dois vértices em um mesmo nível, o que possui o maior rótulo tem os filhos com rótulos maiores
+- A raiz faz parte do centro (a diferença entre as alturas das duas subárvores mais altas é no máximo 1)
+- Para dois vértices de um mesmo nível, não existe um que não é folha e outro de rótulo maior que é folha
+- O padrão da árvore (usando algoritmo de Ahu) é inserido em uma tabela hash
+  
 # uso
 
 - make
