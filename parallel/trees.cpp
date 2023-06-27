@@ -111,7 +111,7 @@ bool prunning(ThreadData& td, int h) {
 			int v = td.lv[i][k], p = td.par[v];
 			max_depth[v] = i;
 			if(td.deg[v] - (p != -1)) max_depth[v] = max_depth[td.adj[v][p != -1]];
-			if(k < td.lv_sz[i] - 1 && td.par[td.lv[i][k + 1]] == p && max_depth[v] < max_depth[td.lv[i][k + 1]]) 
+			if(k < td.lv_sz[i] - 1 && td.par[td.lv[i][k + 1]] == p && max_depth[v] < max_depth[td.lv[i][k + 1]])
 				return true;
 		}
 	}
@@ -157,9 +157,9 @@ void backtrack(ThreadData& td, int h, int cur_p, int v) {
 }
 
 int main(int argc, char* argv[]) {
-	
+
 	int save;
-	
+
 	if(argc < 3 || sscanf(argv[1], "%d", &n) <= 0 || sscanf(argv[2], "%d", &save) <= 0) {
 		cout << "use: ./trees <nós> <save=0/1>\n";
 		return 0;
@@ -172,7 +172,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	if(!getenv("OMP_NUM_THREADS")) {
-		cout << "exporte OMP_NUM_THREADS\n";		
+		cout << "exporte OMP_NUM_THREADS\n";
 		cout << "exemplo: export OMP_NUM_THREADS=2\n";
 		exit(0);
 	}
@@ -205,13 +205,13 @@ int main(int argc, char* argv[]) {
 
 		backtrack(td, 2, 0, v);
 	}
-	
+
 	vector<uint64_t> t;
 
 	#ifdef DEBUG
 	double median = 0, dsp = 0;
 	for(int i = 0; i < num_threads; ++i) median += tdata[i].trees.size();
-	median /= n;
+	median /= num_threads;
 	#endif
 
 	for(int i = 0; i < num_threads; ++i) {
