@@ -3,7 +3,7 @@ Algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 
 - Os vértices de um nível = h possuem rótulos maiores que os do nível = h + 1
 - Para dois vértices em um mesmo nível, o que possui o maior rótulo tem os filhos com rótulos maiores
 - A raiz faz parte do centro (a diferença entre as alturas das duas subárvores mais altas é no máximo 1)
-- Para dois vértices de um mesmo nível, não existe um que não é folha e outro de rótulo maior que é folha
+- Para dois vértices irmãos, o que possui o maior rótulo tem a altura da subárvore maior ou igual a um irmão de rótulo menor
 - O padrão da árvore (usando algoritmo de Ahu) é inserido em uma tabela hash
   
 # uso
