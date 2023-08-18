@@ -1,5 +1,5 @@
 CPUC      = g++
-CFLAGS    = -O3 --std=c++17 -Wall -fsanitize=address -fopenmp 
+CFLAGS    = -O3 --std=c++17 -Wall -fsanitize=address -lpthread 
 DEFS      = -D DEBUG
 INCLUDES  =
 LIBDIR   = -L/usr/lib

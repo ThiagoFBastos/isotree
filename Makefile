@@ -7,8 +7,12 @@ LIBS     =
 LINK     =  $(LIBDIR) $(LIBS)
 COMPILER  = $(CPUC) $(DEFS) $(INCLUDES) $(CFLAGS)
 
-all:
+all: trees teste
+
+trees: trees.cpp
 	$(COMPILER) $(LINK) -o trees trees.cpp
+
+teste: teste.cpp
 	$(COMPILER) $(LINK) -o teste teste.cpp
 
 clean:
