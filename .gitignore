@@ -8,3 +8,6 @@ trees.dat
 trees.txt~
 trees.txt
 .gitignore~
+parallel/pthread/*
+parallel/openmp/trees
+parallel/openmp/teste
