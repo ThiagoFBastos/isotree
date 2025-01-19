@@ -62,3 +62,36 @@ Para ver se o arquivo está correto (não tem árvores duplicadas nem está mal 
 			```
 			./teste trees.dat 0
 			```
+
+## Versão paralela
+A versão paralela do algoritmo utiliza a biblioteca openmp para dividir a computação das árvores em múltiplos threads. 
+A abordagem é bem simples: dado o número máximo de threads a serem lançadas, o algoritmo separa cada sub-árvore da raiz para uma thread disponível e asim ela obtém todas as árvores não-rotuladas alcançáveis e no final das computações de todas as threads, os resultados são combinados para se obter as árvores de forma não repetida.
+
+### Instruções
+
+- digite no terminal:
+	```
+	make
+	```
+- para gerar as árvores, digite no terminal:
+	```
+	./trees <número de vértices> <número de threads> <flag = 0 ou 1>
+	```
+	- se flag é diferente de 0, digite: 
+		```
+		./trees <número de vértices> <número de threads> 1 <arquivo binário>
+		```
+		- exemplo: 
+			```
+			./trees 20 10 1 trees.dat
+			```
+	- senão, digite:
+		```
+		./trees <número de vértices> <número de threads> 0
+		```
+		- exemplo:
+			```
+			./trees 20 10 0
+
+### Teste
+Os mesmos passos que o sequencial
