@@ -11,3 +11,4 @@ trees.txt
 parallel/pthread/*
 parallel/openmp/trees
 parallel/openmp/teste
+.vs

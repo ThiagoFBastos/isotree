@@ -160,13 +160,13 @@ int main(int argc, char* argv[]) {
 
 	int num_threads, save;
 
-	if(argc < 3 || sscanf(argv[1], "%d", &n) <= 0 || sscanf(argv[2], "%d", &num_threads) <= 0 || sscanf(argv[3], "%d", &save) <= 0) {
+	if(argc < 4 || sscanf(argv[1], "%d", &n) <= 0 || sscanf(argv[2], "%d", &num_threads) <= 0 || sscanf(argv[3], "%d", &save) <= 0) {
 		cout << "use: ./trees <nós> <número de threads> <save=0/1>\n";
 		return 0;
 	} else if(n > 24 || n < 4) {
 		cout << "o número de nós deve ser entre 4 e 24\n";
 		return 0;
-	} else if(save && argc < 4) {
+	} else if(save && argc < 5) {
 		cout << "use: ./trees <nós> <número de threads> 1 <arquivo>\n";
 		return 0;
 	}
