@@ -222,7 +222,7 @@ int main(int argc, char* argv[]) {
 	t.resize(unique(t.begin(), t.end()) - t.begin());
 
 	if(save) {
-		ofstream fs(argv[3], ofstream :: binary);
+		ofstream fs(argv[4], ofstream :: binary);
 		int cnt_trees = t.size();
 		fs.write((const char*)&n, sizeof(int));
 		fs.write((const char*)&cnt_trees, sizeof(int));
