@@ -235,7 +235,7 @@ int main(int argc, char* argv[]) {
 	#ifdef DEBUG
 	cout.precision(3);
 	cout.setf(ios_base :: fixed);
-	cout << "desvio padrão entre a quantidade de árvores entre as threads: " << sqrt(dsp / n) << '\n';
+	cout << "desvio padrão entre a quantidade de árvores entre as threads: " << sqrt(dsp / num_threads) << '\n';
 	#endif
 
 	delete[] tdata;
