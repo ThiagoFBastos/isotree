@@ -1,7 +1,8 @@
 # Isotree
 
-Algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 22) vértices:
-Primeiro construímos a árvore com um vértice isolado e após isso vamos contruindo a árvore
+Algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 22) vértices. <br>
+Dado que o número de árvores rotuladas é $n^{n - 2}$ de acordo com o teorema de Cayley a computação das árvores não rotuladas é um problema difícil devido a repetição dos padrões das árvores. <br>
+Para isto usamos uma estratégia de primeiro construírmos a árvore com um vértice isolado e após isso vamos contruindo a árvore
 por nível adicionando vértices cujo pai está a um nível acima e respeitando certas restrições.
 Assim que a árvore está completa geramos um pattern para a árvore e o inserimos numa hashtable.
 
@@ -65,7 +66,7 @@ Para ver se o arquivo está correto (não tem árvores duplicadas nem está mal 
 
 ## Versão paralela
 A versão paralela do algoritmo utiliza a biblioteca openmp para dividir a computação das árvores em múltiplos threads. 
-A abordagem é bem simples: dado o número máximo de threads a serem lançadas, o algoritmo separa cada sub-árvore da raiz para uma thread disponível e asim ela obtém todas as árvores não-rotuladas alcançáveis e no final das computações de todas as threads, os resultados são combinados para se obter as árvores de forma não repetida.
+A abordagem é bem simples: dado o número máximo de threads a serem lançadas, o algoritmo separa uma quantidade de sub-árvores da raiz para uma thread disponível e asim ela obtém todas as árvores não-rotuladas alcançáveis e no final das computações de todas as threads, os resultados são combinados para se obter as árvores de forma não repetida.
 
 ### Instruções
 
