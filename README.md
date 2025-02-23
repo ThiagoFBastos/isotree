@@ -6,6 +6,12 @@ Para isto usamos uma estratégia de primeiro construírmos a árvore rotulada co
 por nível adicionando vértices cujo pai está a um nível acima e respeitando certas restrições.
 Assim que a árvore está completa geramos um pattern para a árvore e o inserimos numa hashtable.
 
+## Requisitos
+- Um compilador g++ com suporte ao c++17
+- GNU Make
+- GNU C++ PBDS Library
+- OpenMP (para a versão paralela)
+
 ## Restrições
 - A árvore é enraizada
 - Um vértice que está mais perto da raíz possui um rótulo maior do que um que está mais longe
