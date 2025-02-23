@@ -2,7 +2,7 @@
 
 Algoritmo para encontrar árvores não rotuladas com n (<= 24, mas testado até 22) vértices. <br>
 Dado que o número de árvores rotuladas é $n^{n - 2}$ de acordo com o teorema de Cayley a computação das árvores não rotuladas é um problema difícil devido a repetição dos padrões das árvores. <br>
-Para isto usamos uma estratégia de primeiro construírmos a árvore com um vértice isolado e após isso vamos contruindo a árvore
+Para isto usamos uma estratégia de primeiro construírmos a árvore rotulada com um vértice isolado e após isso vamos contruindo a árvore
 por nível adicionando vértices cujo pai está a um nível acima e respeitando certas restrições.
 Assim que a árvore está completa geramos um pattern para a árvore e o inserimos numa hashtable.
 
